@@ -37,11 +37,3 @@ ng serve --open
 
 Open http://localhost:4200. Start the API first, because the prices come from it.
 
-## API endpoints
-
-| Method | URL | Result |
-|---|---|---|
-| GET | /api/gold-prices | Today's price for all karats (200) |
-| GET | /api/gold-prices/{karat} | One karat, e.g. /api/gold-prices/21 (200, or 404 if not found) |
-| GET | /api/gold-prices?karat=22 | One karat using a query parameter (200, or 404) |
-| GET | /api/gold-prices/history | Prices for the last 30 days (200) |
