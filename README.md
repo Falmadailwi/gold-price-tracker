@@ -1,59 +1,47 @@
-# AngularFirstapp
+# Gold Price Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+## About
 
-## Development server
+Gold Price Tracker is a single-page web application that shows gold prices in Oman for 18K, 21K, 22K and 24K. The front end is built with Angular and Tailwind CSS, and the prices come from an ASP.NET Core Web API that stores sample data in memory (no database).
 
-To start a local development server, run:
+Users can:
+- View today's gold price for each karat
+- Calculate the value of gold by weight, karat and currency
+- See a 30-day price chart and history table
+- Switch the whole page between Arabic (right to left) and English (left to right)
 
-```bash
-ng serve
+The project has two parts:
+- **Angular app** (`src/`): the user interface
+- **GoldPriceApi** (`GoldPriceApi/`): the REST API with Swagger documentation
+
+## Requirements
+
+- Node.js (LTS) and Angular CLI (`npm install -g @angular/cli`)
+- .NET SDK 10
+
+## Run the API (first terminal)
+
+```
+cd GoldPriceApi
+dotnet run --urls http://localhost:5000
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Swagger: http://localhost:5000/swagger
 
-## Code scaffolding
+## Run Angular (second terminal, from the project root)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+npm install
+ng serve --open
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Open http://localhost:4200. Start the API first, because the prices come from it.
 
-```bash
-ng generate --help
-```
+## API endpoints
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| Method | URL | Result |
+|---|---|---|
+| GET | /api/gold-prices | Today's price for all karats (200) |
+| GET | /api/gold-prices/{karat} | One karat, e.g. /api/gold-prices/21 (200, or 404 if not found) |
+| GET | /api/gold-prices?karat=22 | One karat using a query parameter (200, or 404) |
+| GET | /api/gold-prices/history | Prices for the last 30 days (200) |
