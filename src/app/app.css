@@ -1,0 +1,25 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fb;
+  color: #1f2937;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #14213d;
+}
+
+button {
+  background-color: #e6dfc1;
+  color: #14213d;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddce95;
+}

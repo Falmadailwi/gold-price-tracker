@@ -1,0 +1,6 @@
+@GoldPriceApi_HostAddress = http://localhost:5031
+
+GET {{GoldPriceApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
